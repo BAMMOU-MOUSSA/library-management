@@ -12,9 +12,12 @@ export class MemberComponent implements OnInit {
   newMember: Member = { id: 0, name: '', email: '', joinDate: new Date() };
   selectedMember: Member | null = null;
 
-  constructor(private memberService: MemberService) {
-    console.log('MemberComponent constructor');
-   }
+  // Propriétés temporaires pour le formulaire
+  tempName: string = '';
+  tempEmail: string = '';
+  tempJoinDate: Date = new Date();
+
+  constructor(private memberService: MemberService) {}
 
   ngOnInit(): void {
     this.loadMembers();
@@ -25,19 +28,30 @@ export class MemberComponent implements OnInit {
   }
 
   addMember(): void {
+    this.newMember.name = this.tempName;
+    this.newMember.email = this.tempEmail;
+    this.newMember.joinDate = this.tempJoinDate;
+
     this.memberService.addMember(this.newMember);
-    this.newMember = { id: 0, name: '', email: '', joinDate: new Date() };
+    this.resetForm();
     this.loadMembers();
   }
 
   selectMember(member: Member): void {
     this.selectedMember = { ...member };
+    this.tempName = member.name;
+    this.tempEmail = member.email;
+    this.tempJoinDate = member.joinDate;
   }
 
   updateMember(): void {
     if (this.selectedMember) {
+      this.selectedMember.name = this.tempName;
+      this.selectedMember.email = this.tempEmail;
+      this.selectedMember.joinDate = this.tempJoinDate;
+
       this.memberService.updateMember(this.selectedMember);
-      this.selectedMember = null;
+      this.resetForm();
       this.loadMembers();
     }
   }
@@ -46,5 +60,11 @@ export class MemberComponent implements OnInit {
     this.memberService.deleteMember(id);
     this.loadMembers();
   }
-}
 
+  resetForm(): void {
+    this.tempName = '';
+    this.tempEmail = '';
+    this.tempJoinDate = new Date();
+    this.selectedMember = null;
+  }
+}

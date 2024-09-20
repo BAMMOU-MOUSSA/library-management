@@ -12,30 +12,23 @@ export class BookComponent implements OnInit {
   searchKeyword: string = '';
   showAvailableOnly: boolean = false;
 
-  constructor(private bookService: BookService) { 
-    console.log('BookComponent constructor');
-  }
+  constructor(private bookService: BookService) { }
 
   ngOnInit(): void {
-    console.log('BookComponent ngOnInit');
     this.loadBooks();
   }
 
   loadBooks(): void {
-    console.log('BookComponent ngOnInit');
     this.books = this.bookService.getBooks();
   }
 
   searchBooks(): void {
-    console.log('BookComponent searchBooks method');
-    this.books = this.bookService.getBooks().filter(book =>
-      book.title.toLowerCase().includes(this.searchKeyword.toLowerCase())
-    );
+    this.books = this.bookService.searchBooksByTitle(this.searchKeyword);
   }
 
   toggleAvailabilityFilter(): void {
     if (this.showAvailableOnly) {
-      this.books = this.bookService.getBooks().filter(book => book.available);
+      this.books = this.bookService.filterBooksByAvailability(true);
     } else {
       this.loadBooks();
     }

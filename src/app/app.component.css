@@ -1,0 +1,52 @@
+/* styles.css */
+
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e2e6ea;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .navbar-nav .nav-item .nav-link {
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  .navbar-nav .nav-item .nav-link:hover {
+    color: #0056b3;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .mt-4 {
+    margin-top: 1.5rem !important;
+  }
+  
+  /* Add custom styles for better appearance */
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: rgba(0,0,0,.5);
+  }
+  
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: rgba(0,0,0,.7);
+  }
+  
+  .navbar-light .navbar-brand {
+    color: rgba(0,0,0,.9);
+  }
+  
+  .navbar-light .navbar-brand:hover {
+    color: rgba(0,0,0,1);
+  }
+  

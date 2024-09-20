@@ -9,13 +9,13 @@ export class BookService {
     { id: 1, title: 'Angular for Beginners', author: 'John Doe', publishedDate: new Date('2020-01-01'), available: true },
     { id: 2, title: 'Advanced Angular', author: 'Jane Smith', publishedDate: new Date('2021-05-15'), available: false }
   ];
+  private nextId = 3; // Suivi de l'ID suivant à utiliser
 
   constructor() {
     console.log('BookService constructor');
   }
 
   getBooks(): Book[] {
-    console.log('BookService getBooks method');
     return this.books;
   }
 
@@ -29,13 +29,21 @@ export class BookService {
   }
 
   addBook(book: Book): void {
-    this.books.push(book);
+    const existingBook = this.books.find(b => b.id === book.id);
+    if (!existingBook) {
+      book.id = this.nextId++;
+      this.books.push(book);
+    } else {
+      console.error('Book with this ID already exists');
+    }
   }
 
   updateBook(updatedBook: Book): void {
     const index = this.books.findIndex(book => book.id === updatedBook.id);
     if (index !== -1) {
       this.books[index] = updatedBook;
+    } else {
+      console.error('Book not found');
     }
   }
 
