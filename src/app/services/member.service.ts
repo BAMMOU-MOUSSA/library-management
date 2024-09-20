@@ -6,10 +6,18 @@ import { Member } from '../models/member.model';
 })
 export class MemberService {
   private members: Member[] = [
-    { id: 1, name: 'John Doe', email: 'john@example.com', joinDate: new Date('2020-01-15') },
-    { id: 2, name: 'Jane Smith', email: 'jane@mail.com', joinDate: new Date('2021-03-22') },
-    { id: 3, name: 'Moussa Bammou', email: 'moussa@gmail.com', joinDate: new Date('2019-05-27') },
+    { id: 1, name: 'Naguib Mahfouz', email: 'naguib.mahfouz@example.com', joinDate: new Date('2024-09-05') },
+    { id: 2, name: 'Ghada Al-Samman', email: 'ghada.alsamman@mail.com', joinDate: new Date('2024-09-10') },
+    { id: 3, name: 'Taha Hussein', email: 'taha.hussein@gmail.com', joinDate: new Date('2024-09-15') },
+    { id: 4, name: 'Fatima Al-Fihri', email: 'fatima.fihri@example.com', joinDate: new Date('2024-09-12') },
+    { id: 5, name: 'Omar Khayyam', email: 'omar.khayyam@mail.com', joinDate: new Date('2024-09-14') },
+    { id: 6, name: 'Leila Khaled', email: 'leila.khaled@gmail.com', joinDate: new Date('2024-09-11') },
+    { id: 7, name: 'Hassan Nasrallah', email: 'hassan.nasrallah@example.com', joinDate: new Date('2024-09-09') },
+    { id: 8, name: 'Amina Wadud', email: 'amina.wadud@mail.com', joinDate: new Date('2024-09-13') },
+    { id: 9, name: 'Rami Malek', email: 'rami.malek@gmail.com', joinDate: new Date('2024-09-06') },
+    { id: 10, name: 'Yasmin Abdel Aziz', email: 'yasmin.abdelaziz@example.com', joinDate: new Date('2024-09-08') },
   ];
+  
   private nextId = 4;
 
   getMembers(): Member[] {

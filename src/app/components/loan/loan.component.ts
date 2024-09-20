@@ -33,19 +33,26 @@ export class LoanComponent implements OnInit {
     const book = this.bookService.getBooks().find(b => b.id === this.newLoan.book.id);
     const member = this.memberService.getMembers().find(m => m.id === this.newLoan.member.id);
 
-    if (book && member && book.available) {
-      const loan: Loan = {
-        id: 0, // L'ID sera géré par le service LoanService
-        book: book,
-        member: member,
-        loanDate: new Date(),
-        returnDate: null
-      };
-      this.loanService.addLoan(loan);
-      this.loadLoans();
-      this.newLoan = { book: { id: 0 }, member: { id: 0 } }; // Réinitialiser le formulaire
+    console.log('Livre trouvé:', book);
+    console.log('Membre trouvé:', member);
+
+    if (book && member) {
+      if (book.available) {
+        const loan: Loan = {
+          id: 0, // L'ID sera géré par le service LoanService
+          book: book,
+          member: member,
+          loanDate: new Date(),
+          returnDate: null
+        };
+        this.loanService.addLoan(loan);
+        this.loadLoans();
+        this.newLoan = { book: { id: 0 }, member: { id: 0 } }; // Réinitialiser le formulaire
+      } else {
+        alert('Livre non disponible.');
+      }
     } else {
-      alert('Livre non disponible ou membre non trouvé.');
+      alert('Livre ou membre non trouvé.');
     }
   }
 

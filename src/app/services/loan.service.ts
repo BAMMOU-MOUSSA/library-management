@@ -7,8 +7,24 @@ import { MemberService } from './member.service';
   providedIn: 'root'
 })
 export class LoanService {
-  private loans: Loan[] = [];
-  private nextId = 1; // Suivi de l'ID des emprunts
+  private loans: Loan[] = [
+    {
+      id: 1,
+      book: { id: 1, title: 'Angular pour les Débutants', author: 'John Doe', publishedDate: new Date('2020-01-01'), available: false },
+      member: { id: 1, name: 'Naguib Mahfouz', email: 'naguib.mahfouz@example.com', joinDate: new Date('2024-09-05') },
+      loanDate: new Date('2024-09-15'),
+      returnDate: null
+    },
+    {
+      id: 2,
+      book: { id: 2, title: 'Advanced Angular', author: 'Jane Smith', publishedDate: new Date('2021-05-15'), available: false },
+      member: { id: 2, name: 'Ghada Al-Samman', email: 'ghada.alsamman@mail.com', joinDate: new Date('2024-09-10') },
+      loanDate: new Date('2024-09-12'),
+      returnDate: null
+    }
+  ];
+
+  private nextId = 3;  
 
   constructor(
     private bookService: BookService,
@@ -29,7 +45,7 @@ export class LoanService {
       book.available = false;
       this.bookService.updateBook(book);
     } else {
-      console.error('Book not available or member not found');
+      console.error('Book not available or member not found.');
     }
   }
 

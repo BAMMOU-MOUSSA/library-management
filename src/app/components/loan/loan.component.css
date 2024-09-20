@@ -1,4 +1,3 @@
-/* Style général de la page */
 .container {
     max-width: 900px;
     margin: 50px auto;
@@ -9,7 +8,6 @@
     background-color: #fff;
 }
 
-/* Titre principal */
 h1 {
     text-align: center;
     color: #007bff;
@@ -17,13 +15,11 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* Sous-titre du formulaire */
 h2 {
     font-size: 1.5rem;
     color: #28a745;
 }
 
-/* Style du tableau */
 .table {
     margin-top: 20px;
 }
@@ -50,7 +46,6 @@ h2 {
     transition: background-color 0.3s ease;
 }
 
-/* Boutons d'action dans le tableau */
 .btn-success {
     background-color: #28a745;
     border-color: #28a745;
@@ -71,7 +66,6 @@ h2 {
     border-color: #004085;
 }
 
-/* Formulaire d'ajout d'emprunt */
 form {
     margin-top: 30px;
     padding: 20px;
@@ -79,45 +73,4 @@ form {
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-label {
-    font-weight: bold;
-    color: #333;
-}
-
-.form-control {
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.form-control:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Espacement et marges pour les éléments du formulaire */
-.form-group {
-    margin-bottom: 20px;
-}
-
-button[type="submit"] {
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-.mt-3, .mt-5 {
-    margin-top: 1.5rem !important;
-    margin-top: 3rem !important;
-}
-
-.mb-3 {
-    margin-bottom: 1.5rem !important;
-}
-
-/* Animation pour le hover sur les boutons */
-button:hover {
-    transition: background-color 0.3s ease;
 }
