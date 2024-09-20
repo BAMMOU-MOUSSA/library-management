@@ -1,10 +1,10 @@
 <div class="container mt-5">
-  <h1 class="text-primary mb-4">📚 Liste des Livres</h1>
+  <h1 class="text-primary mb-4 text-center">📚 Liste des Livres</h1>
 
   <!-- Search and Filters -->
   <div class="row mb-4">
     <div class="col-md-6">
-      <input type="text" class="form-control border-primary" placeholder="Search by title..." [(ngModel)]="searchKeyword" (input)="searchBooks()">
+      <input type="text" class="form-control border-primary" placeholder="Search by title..." aria-label="Search by title" [(ngModel)]="searchKeyword" (input)="searchBooks()"> 
     </div>
     <div class="col-md-6 text-end">
       <div class="form-check form-switch d-inline-block">
@@ -16,14 +16,15 @@
 
   <!-- Book Table -->
   <div class="table-responsive">
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-hover" aria-describedby="bookListDescription">
+      <caption id="bookListDescription">Liste des livres disponibles dans la bibliothèque</caption>
       <thead class="bg-primary text-white">
         <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Published Date</th>
-          <th>Available</th>
+          <th scope="col">ID</th>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Published Date</th>
+          <th scope="col">Available</th>
         </tr>
       </thead>
       <tbody>

@@ -9,30 +9,15 @@
 }
 
 h1 {
-    text-align: center;
     color: #333;
     margin-bottom: 20px;
-}
-
-.mb-4 {
-    margin-bottom: 1.5rem !important;
+    font-size: 1.75rem;
 }
 
 .form-control {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-    margin-top: 5px;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #004085;
 }
 
 .form-check-label {
@@ -47,10 +32,12 @@ h1 {
 .table th, .table td {
     text-align: center;
     vertical-align: middle;
+    padding: 10px;
 }
 
 .table thead th {
-    background-color: #f8f9fa;
+    background-color: #007bff;
+    color: #fff;
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
@@ -58,5 +45,16 @@ h1 {
 }
 
 .table-striped tbody tr:hover {
-    background-color: #e9ecef;
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.badge {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+}
+
+.text-primary {
+    color: #007bff !important;
 }

@@ -1,52 +1,121 @@
 /* styles.css */
 
+/* Navbar Styles */
 .navbar {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e2e6ea;
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
-  
-  .navbar-nav .nav-item .nav-link {
-    color: #007bff;
-    transition: color 0.3s ease;
-  }
-  
-  .navbar-nav .nav-item .nav-link:hover {
-    color: #0056b3;
-  }
-  
-  .container {
-    margin-top: 20px;
-  }
-  
-  .mt-4 {
-    margin-top: 1.5rem !important;
-  }
-  
-  /* Add custom styles for better appearance */
-  body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  
-  .navbar-light .navbar-nav .nav-link {
-    color: rgba(0,0,0,.5);
-  }
-  
-  .navbar-light .navbar-nav .nav-link:hover {
-    color: rgba(0,0,0,.7);
-  }
-  
-  .navbar-light .navbar-brand {
-    color: rgba(0,0,0,.9);
-  }
-  
-  .navbar-light .navbar-brand:hover {
-    color: rgba(0,0,0,1);
-  }
-  
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e2e6ea;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.nav-link {
+  font-size: 1.1rem;
+  color: #007bff;
+  margin-right: 15px;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: #0056b3;
+  font-weight: bold;
+}
+
+.nav-link:before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #007bff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover:before {
+  visibility: visible;
+  width: 100%;
+}
+
+.navbar-toggler {
+  border: none;
+  color: #007bff;
+}
+
+/* Main Container */
+.container {
+  margin-top: 40px;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.mt-4 {
+  margin-top: 1.5rem !important;
+}
+
+/* Footer Styling (Optional) */
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #f8f9fa;
+  margin-top: 50px;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Navbar hover effects */
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar-light .navbar-brand {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar-light .navbar-brand:hover {
+  color: rgba(0, 0, 0, 1);
+}
+
+/* Button Styling */
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
