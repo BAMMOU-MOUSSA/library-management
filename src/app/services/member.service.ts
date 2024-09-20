@@ -16,7 +16,12 @@ export class MemberService {
     { id: 8, name: 'Amina Wadud', email: 'amina.wadud@mail.com', joinDate: new Date('2024-09-13') },
     { id: 9, name: 'Rami Malek', email: 'rami.malek@gmail.com', joinDate: new Date('2024-09-06') },
     { id: 10, name: 'Yasmin Abdel Aziz', email: 'yasmin.abdelaziz@example.com', joinDate: new Date('2024-09-08') },
-  ];
+    { id: 11, name: 'Mahmoud Darwich', email: 'mahmoud.darwich@example.com', joinDate: new Date('2024-09-18') },
+    { id: 12, name: 'Ahdaf Soueif', email: 'ahdaf.soueif@example.com', joinDate: new Date('2024-09-19') },
+    { id: 13, name: 'Youssef Ziedan', email: 'youssef.ziedan@example.com', joinDate: new Date('2024-09-20') },
+    { id: 14, name: 'Hanan al-Shaykh', email: 'hanan.al-shaykh@example.com', joinDate: new Date('2024-09-21') },
+    { id: 15, name: 'Amr Khaled', email: 'amr.khaled@example.com', joinDate: new Date('2024-09-22') }
+ ];
   
   private nextId = 4;
 

@@ -10,19 +10,34 @@ export class LoanService {
   private loans: Loan[] = [
     {
       id: 1,
-      book: { id: 1, title: 'Angular pour les Débutants', author: 'John Doe', publishedDate: new Date('2020-01-01'), available: false },
-      member: { id: 1, name: 'Naguib Mahfouz', email: 'naguib.mahfouz@example.com', joinDate: new Date('2024-09-05') },
+      book: { id: 2, title: 'Introduction à l’algèbre commutative', author: 'Jean-Pierre Serre', publishedDate: new Date('1965-04-10'), available: false},
+      member:{ id: 14, name: 'Hanan al-Shaykh', email: 'hanan.al-shaykh@example.com', joinDate: new Date('2024-09-21') },
       loanDate: new Date('2024-09-15'),
       returnDate: null
     },
     {
       id: 2,
-      book: { id: 2, title: 'Advanced Angular', author: 'Jane Smith', publishedDate: new Date('2021-05-15'), available: false },
-      member: { id: 2, name: 'Ghada Al-Samman', email: 'ghada.alsamman@mail.com', joinDate: new Date('2024-09-10') },
+      book: { id: 10, title: 'Le capital au XXIe siècle', author: 'Thomas Piketty', publishedDate: new Date('2013-08-25'), available: false   },
+      member: { id: 7, name: 'Hassan Nasrallah', email: 'hassan.nasrallah@example.com', joinDate: new Date('2024-09-09') },
       loanDate: new Date('2024-09-12'),
+      returnDate: null
+    },
+    {
+      id: 3,
+      book: { id: 4, title: 'La philosophie islamique', author: 'Muhammad Abed al-Jabri', publishedDate: new Date('1984-09-20'), available: false },
+      member: { id: 3, name: 'Taha Hussein', email: 'taha.hussein@gmail.com', joinDate: new Date('2024-09-15') },
+      loanDate: new Date('2024-09-16'),
+      returnDate: null
+    },
+    {
+      id: 4,
+      book: { id: 1, title: 'Les fondements du droit civil', author: 'Abd al-Razzaq al-Sanhuri', publishedDate: new Date('1949-06-15'), available: false  },
+      member: { id: 3, name: 'Taha Hussein', email: 'taha.hussein@gmail.com', joinDate: new Date('2024-09-15')  },
+      loanDate: new Date('2024-09-17'),
       returnDate: null
     }
   ];
+  
 
   private nextId = 3;  
 

@@ -6,16 +6,16 @@ import { Book } from '../models/book.model';
 })
 export class BookService {
   private books: Book[] = [
-    { id: 1, title: 'Les fondements du droit civil', author: 'Abd al-Razzaq al-Sanhuri', publishedDate: new Date('1949-06-15'), available: true },
+    { id: 1, title: 'Les fondements du droit civil', author: 'Abd al-Razzaq al-Sanhuri', publishedDate: new Date('1949-06-15'), available: false },
     { id: 2, title: 'Introduction à l’algèbre commutative', author: 'Jean-Pierre Serre', publishedDate: new Date('1965-04-10'), available: false },
     { id: 3, title: 'La biologie des croyances', author: 'Bruce H. Lipton', publishedDate: new Date('2005-10-01'), available: true },
     { id: 4, title: 'La philosophie islamique', author: 'Muhammad Abed al-Jabri', publishedDate: new Date('1984-09-20'), available: false },
     { id: 5, title: 'La vérité sur l’affaire Harry Quebert', author: 'Joël Dicker', publishedDate: new Date('2012-09-19'), available: true },
     { id: 6, title: 'L’Étranger', author: 'Albert Camus', publishedDate: new Date('1942-05-19'), available: true },
     { id: 7, title: 'L’Encyclopédie de la médecine', author: 'Ibn Sina (Avicenne)', publishedDate: new Date('1025-01-01'), available: true },
-    { id: 8, title: 'Le guide des égarés', author: 'Maimonide', publishedDate: new Date('1190-01-01'), available: false },
+    { id: 8, title: 'Le guide des égarés', author: 'Maimonide', publishedDate: new Date('1190-01-01'), available: true },
     { id: 9, title: 'Un homme sans loi', author: 'Tahar Ben Jelloun', publishedDate: new Date('2017-03-15'), available: true },
-    { id: 10, title: 'Le capital au XXIe siècle', author: 'Thomas Piketty', publishedDate: new Date('2013-08-25'), available: true }
+    { id: 10, title: 'Le capital au XXIe siècle', author: 'Thomas Piketty', publishedDate: new Date('2013-08-25'), available: false }
   ];
   
   private nextId = 11; // Suivi de l'ID suivant à utiliser
