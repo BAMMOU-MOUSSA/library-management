@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { LoanService } from '../../services/loan.service';
-import { BookService } from '../../services/book.service';
-import { MemberService } from '../../services/member.service';
 import { Loan } from '../../models/loan.model';
 import { Book } from '../../models/book.model';
 import { Member } from '../../models/member.model';
+import { BookService } from '../../services/book.service';
+import { MemberService } from '../../services/member.service';
 
 @Component({
   selector: 'app-loan',
@@ -13,6 +13,8 @@ import { Member } from '../../models/member.model';
 })
 export class LoanComponent implements OnInit {
   loans: Loan[] = [];
+  books: Book[] = [];
+  members: Member[] = [];
   newLoan: { book: { id: number }, member: { id: number } } = { book: { id: 0 }, member: { id: 0 } };
 
   constructor(
@@ -23,41 +25,69 @@ export class LoanComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLoans();
+    this.loadBooks();
+    this.loadMembers();
   }
 
   loadLoans(): void {
-    this.loans = this.loanService.getLoans();
+    this.loanService.getLoans().subscribe({
+      next: (data: Loan[]) => this.loans = data,
+      error: (err) => console.error('Erreur lors du chargement des emprunts', err)
+    });
+  }
+
+  loadBooks(): void {
+    this.bookService.getBooks().subscribe({
+      next: (data: Book[]) => this.books = data,
+      error: (err) => console.error('Erreur lors du chargement des livres', err)
+    });
+  }
+
+  loadMembers(): void {
+    this.memberService.getMembers().subscribe({
+      next: (data: Member[]) => this.members = data,
+      error: (err) => console.error('Erreur lors du chargement des membres', err)
+    });
   }
 
   addLoan(): void {
-    const book = this.bookService.getBooks().find(b => b.id === this.newLoan.book.id);
-    const member = this.memberService.getMembers().find(m => m.id === this.newLoan.member.id);
+    const bookId = this.newLoan.book.id;
+    const memberId = this.newLoan.member.id;
 
-    console.log('Livre trouvé:', book);
-    console.log('Membre trouvé:', member);
+    if (bookId && memberId) {
+      const book = this.books.find(b => b.id === bookId);
+      const member = this.members.find(m => m.id === memberId);
 
-    if (book && member) {
-      if (book.available) {
-        const loan: Loan = {
-          id: 0, // L'ID sera géré par le service LoanService
-          book: book,
-          member: member,
-          loanDate: new Date(),
-          returnDate: null
-        };
-        this.loanService.addLoan(loan);
-        this.loadLoans();
-        this.newLoan = { book: { id: 0 }, member: { id: 0 } }; // Réinitialiser le formulaire
+      if (book && member) {
+        if (book.available) {
+          const loan: Loan = {
+            id: 0,
+            book: book,
+            member: member,
+            loanDate: new Date(),
+            returnDate: null
+          };
+
+          this.loanService.addLoan(loan).subscribe({
+            next: () => {
+              this.loadLoans();
+              this.newLoan = { book: { id: 0 }, member: { id: 0 } };
+            },
+            error: (err) => console.error('Erreur lors de l\'ajout de l\'emprunt', err)
+          });
+        } else {
+          alert('Livre non disponible.');
+        }
       } else {
-        alert('Livre non disponible.');
+        alert('Livre ou membre non trouvé.');
       }
     } else {
-      alert('Livre ou membre non trouvé.');
+      alert('Veuillez sélectionner un livre et un membre.');
     }
   }
 
   returnBook(loanId: number): void {
     this.loanService.returnBook(loanId);
-    this.loadLoans();
+    this.loadLoans(); // Recharger la liste des emprunts après le retour
   }
 }

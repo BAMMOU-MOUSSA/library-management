@@ -12,7 +12,6 @@ export class MemberComponent implements OnInit {
   newMember: Member = { id: 0, name: '', email: '', joinDate: new Date() };
   selectedMember: Member | null = null;
 
-  // Propriétés temporaires pour le formulaire
   tempName: string = '';
   tempEmail: string = '';
   tempJoinDate: Date = new Date();
@@ -24,7 +23,9 @@ export class MemberComponent implements OnInit {
   }
 
   loadMembers(): void {
-    this.members = this.memberService.getMembers();
+    this.memberService.getMembers().subscribe(members => {
+      this.members = members;
+    });
   }
 
   addMember(): void {
@@ -32,9 +33,10 @@ export class MemberComponent implements OnInit {
     this.newMember.email = this.tempEmail;
     this.newMember.joinDate = this.tempJoinDate;
 
-    this.memberService.addMember(this.newMember);
-    this.resetForm();
-    this.loadMembers();
+    this.memberService.addMember(this.newMember).subscribe(() => {
+      this.resetForm();
+      this.loadMembers();
+    });
   }
 
   selectMember(member: Member): void {
@@ -50,15 +52,17 @@ export class MemberComponent implements OnInit {
       this.selectedMember.email = this.tempEmail;
       this.selectedMember.joinDate = this.tempJoinDate;
 
-      this.memberService.updateMember(this.selectedMember);
-      this.resetForm();
-      this.loadMembers();
+      this.memberService.updateMember(this.selectedMember).subscribe(() => {
+        this.resetForm();
+        this.loadMembers();
+      });
     }
   }
 
   deleteMember(id: number): void {
-    this.memberService.deleteMember(id);
-    this.loadMembers();
+    this.memberService.deleteMember(id).subscribe(() => {
+      this.loadMembers();
+    });
   }
 
   resetForm(): void {

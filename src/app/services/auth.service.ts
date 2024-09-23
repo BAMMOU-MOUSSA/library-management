@@ -1,30 +1,27 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { isPlatformBrowser } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isAuthenticated: boolean = false;
+  private apiUrl = 'http://localhost:8081/api/auth/login'; // URL de l'API
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+  constructor(
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     console.log('AuthService constructor');
   }
 
-  login(username: string, password: string): boolean {
-    // Simulate authentication, replace with actual logic
-    if (username === 'admin' && password === 'moussa') {
-      this.isAuthenticated = true;
-      if (isPlatformBrowser(this.platformId)) {
-        localStorage.setItem('currentUser', JSON.stringify({ username }));
-      }
-      return true;
-    }
-    return false;
+  login(username: string, password: string): Observable<any> {
+    const user = { username, password };
+    return this.http.post(this.apiUrl, user, { responseType: 'text' });
   }
 
   logout(): void {
-    this.isAuthenticated = false;
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('currentUser');
     }

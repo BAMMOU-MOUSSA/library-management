@@ -17,10 +17,16 @@ export class LoginComponent {
   }
 
   login(): void {
-    if (this.authService.login(this.username, this.password)) {
-      this.router.navigate(['/books']);
-    } else {
-      this.errorMessage = 'Identifiants invalides.';
-    }
+    this.authService.login(this.username, this.password).subscribe(
+      response => {
+        // Connexion réussie
+        localStorage.setItem('currentUser', JSON.stringify({ username: this.username }));
+        this.router.navigate(['/books']);
+      },
+      error => {
+        // Erreur de connexion
+        this.errorMessage = 'Identifiants invalides.';
+      }
+    );
   }
 }
