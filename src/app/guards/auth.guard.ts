@@ -1,5 +1,6 @@
+//auth.guard.ts
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
-import { CanActivate, Router } from '@angular/router';
+import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -14,16 +15,17 @@ export class AuthGuard implements CanActivate {
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
-  canActivate(): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (isPlatformBrowser(this.platformId)) {
       if (this.authService.isAuthenticatedUser()) {
         return true;
       } else {
-        this.router.navigate(['/login']);
+        // Redirection vers la page de login avec l'URL de retour
+        this.router.navigate(['/login'], { queryParams: { returnUrl: state.url } });
         return false;
       }
     }
-    // Handle the case where this code is running on the server
     return false;
   }
 }
+

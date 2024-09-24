@@ -12,9 +12,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    console.log('AuthService constructor');
-  }
+  ) { }
 
   login(username: string, password: string): Observable<any> {
     const user = { username, password };
@@ -29,9 +27,15 @@ export class AuthService {
 
   isAuthenticatedUser(): boolean {
     if (isPlatformBrowser(this.platformId)) {
-      const user = localStorage.getItem('currentUser');
-      return user ? true : false;
+      return localStorage.getItem('currentUser') !== null;
     }
     return false;
+  }
+
+  // Appeler cette méthode pour stocker les informations de l'utilisateur
+  setCurrentUser(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('currentUser', 'true'); // ou stocker un jeton JWT
+    }
   }
 }
