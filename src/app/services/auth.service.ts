@@ -32,10 +32,10 @@ export class AuthService {
     return false;
   }
 
-  // Appeler cette méthode pour stocker les informations de l'utilisateur
+  // cette méthode pour stocker les informations de l'utilisateur
   setCurrentUser(): void {
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.setItem('currentUser', 'true'); // ou stocker un jeton JWT
+      localStorage.setItem('currentUser', 'true');
     }
   }
 }

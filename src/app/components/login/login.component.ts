@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -14,24 +14,18 @@ export class LoginComponent {
 
   constructor(
     private authService: AuthService, 
-    private router: Router,
-    private route: ActivatedRoute
-  ) { 
-    console.log('LoginComponent constructor');
-  }
+    private router: Router
+  ) {}
 
   login(): void {
     this.authService.login(this.username, this.password).subscribe({
       next: (response) => {
-        // Connexion réussie
         localStorage.setItem('currentUser', JSON.stringify({ username: this.username }));
         
-        // Récupérer l'URL de retour ou rediriger vers /books
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/books';
-        this.router.navigate([returnUrl]);
+        // Redirection directe vers la page /books après connexion réussie
+        this.router.navigate(['/books']);
       },
       error: (error) => {
-        // Gestion d'erreur de connexion
         this.errorMessage = 'Identifiants invalides.';
       }
     });

@@ -7,7 +7,7 @@ import { Member } from '../models/member.model';
   providedIn: 'root'
 })
 export class MemberService {
-  private apiUrl = 'http://localhost:8081/api/members'; // Remplace par l'URL appropriée
+  private apiUrl = 'http://localhost:8081/api/members'; 
 
   constructor(private http: HttpClient) {}
 

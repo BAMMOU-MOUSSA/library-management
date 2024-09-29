@@ -57,7 +57,7 @@
   color: #007bff;
 }
 
-/* Main Container */
+
 .container {
   margin-top: 40px;
   max-width: 1200px;
@@ -67,7 +67,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Typography */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f4f4f4;
@@ -83,7 +82,6 @@ h1, h2, h3 {
   margin-top: 1.5rem !important;
 }
 
-/* Footer Styling (Optional) */
 footer {
   text-align: center;
   padding: 20px 0;
@@ -94,7 +92,6 @@ footer {
   color: #666;
 }
 
-/* Navbar hover effects */
 .navbar-light .navbar-nav .nav-link {
   color: rgba(0, 0, 0, 0.5);
 }
@@ -111,7 +108,7 @@ footer {
   color: rgba(0, 0, 0, 1);
 }
 
-/* Button Styling */
+
 button {
   transition: background-color 0.3s ease, transform 0.2s ease;
 }

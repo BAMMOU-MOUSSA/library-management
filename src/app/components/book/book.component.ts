@@ -12,6 +12,7 @@ export class BookComponent implements OnInit {
   searchKeyword: string = '';
   showAvailableOnly: boolean = false;
   errorMessage: string | null = null;
+  newBook: Book = { id: 0, title: '', author: '', publishedDate:new Date, available: true }; // Livre à ajouter
 
   constructor(private bookService: BookService) { }
 
@@ -51,15 +52,27 @@ export class BookComponent implements OnInit {
     });
   }
 
-  // Rechercher un livre par ID
-  getBookById(bookId: number): void {
-    this.bookService.getBookById(bookId).subscribe({
-      next: (book) => {
-        // Ici, vous pouvez traiter le livre trouvé
-        console.log('Livre trouvé:', book);
+  // Ajouter un nouveau livre
+  onAddBook(): void {
+    this.bookService.addBook(this.newBook).subscribe({
+      next: (book: Book) => {
+        this.books.push(book); // Ajouter le nouveau livre à la liste
+        this.newBook = { id: 0, title: '', author: '', publishedDate:new Date, available: true }; // Réinitialiser le formulaire
       },
-      error: (err) => this.handleError('Erreur lors de la recherche du livre', err)
+      error: (err) => this.handleError('Erreur lors de l\'ajout du livre', err)
     });
+  }
+
+  // Supprimer un livre
+  onDeleteBook(bookId: number): void {
+    if (confirm('Voulez-vous vraiment supprimer ce livre ?')) {
+      this.bookService.deleteBook(bookId).subscribe({
+        next: () => {
+          this.books = this.books.filter(book => book.id !== bookId); // Supprimer le livre de la liste
+        },
+        error: (err) => this.handleError('Erreur lors de la suppression du livre', err)
+      });
+    }
   }
 
   // Gérer le succès de la requête

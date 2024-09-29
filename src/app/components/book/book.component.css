@@ -58,3 +58,14 @@ h1 {
 .text-primary {
     color: #007bff !important;
 }
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #c09c31;
+    color: #000000;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+}
